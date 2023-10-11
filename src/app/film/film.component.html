@@ -1,13 +1,52 @@
-<li class="list-group-item" [ngClass]="{'list-group-item-info' : filmOnAir == true,
-                                        'list-group-item-warning' : filmOnAir == false}">
-    <div class="onAir" *ngIf="filmOnAir == false">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Blu-ray_Disc.svg/1200px-Blu-ray_Disc.svg.png" alt="Blue Ray">
+<li [ngClass]=" { 'list-group-item': true,
+'list-group-item-info': filmOnAir == true,
+'list-group-item-warning': filmOnAir == false }">
+  <div class="row">
+  <div class="col-2">
+    <img class="affiche" [src]="filmAffiche">
+  </div>
+  <div class="col-8">
+      <div class="onAir" *ngIf="filmOnAir == false">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Blu-ray_Disc.svg/1200px-Blu-ray_Disc.svg.png">
+      </div>
+      <div class="onAir" *ngIf="filmOnAir == true">
+        <img src="https://fr.web.img3.acsta.net/r_654_368/newsv7/21/04/29/14/22/0010719.jpg">
+      </div>
+      <h3 [ngStyle]="{color: changeColor()}" >Film : {{ filmName }}</h3>
+      <button class="btn btn-outline-success" (click)="onWatchFilm()">Regarder</button> <br>
+      <button class="btn btn-outline-info" (click)="onSwitch()">Switch</button>
     </div>
-    <div class="onAir" *ngIf="filmOnAir == true">
-        <img src="https://www.coze.fr/wp-content/uploads/2021/04/cinema-004.jpg" alt="Salle">
+    <div class="col-2">
+      <a [routerLink]="['/modif', id]" class="btn btn-warning">M</a>
+      <button class="btn btn-danger" >X</button>
     </div>
-    <h3 [ngStyle]="{color : changeColor()}">Film :  {{filmName}}  -- Visibilité :  {{getOnAir()}} </h3>
-    <img [src]="filmAffiche" alt="Affiche" class="affiche">
-    <button class="btn btn-outline-success" (click)="onWatchFilm()" >Regarder</button>
-    <button class="btn btn-outline-info" (click)="onSwitch()">Switch</button>
+  </div>
 </li>
+
+
+
+<!-- 
+
+    <div style="text-align:center">
+  <h1>
+    Welcome to {{title}}
+  </h1>
+</div>
+
+<ul class="list-group" *ngFor="let film of films; let i = index;">
+  {{i+1 }}<app-film [filmName]="film.filmName" [filmOnAir]="film.filmOnAir" [filmAffiche]="film.filmAffiche" [index]="i"></app-film>
+</ul>
+
+
+  <ul class="list-group">
+    <app-film *ngfor="let film of tableauFilm" [filmName]="film.filmName" ...></app-film>
+  </ul>
+ -->
+  <!-- <app-film [filmName]="'Les visiteurs'" [filmOnAir]="false" [filmAffiche]="'https://upload.wikimedia.org/wikipedia/fr/6/60/Les_Visiteurs_Logo.png'"></app-film>
+  <app-film [filmName]="'Yepa'" [filmOnAir]="false" [filmAffiche]="'https://upload.wikimedia.org/wikipedia/fr/6/60/Les_Visiteurs_Logo.png'"></app-film>
+  <app-film [filmName]="'Jurasic Park'" [filmOnAir]="true" [filmAffiche]="'https://upload.wikimedia.org/wikipedia/fr/6/60/Les_Visiteurs_Logo.png'"></app-film>
+  <app-film></app-film> -->
+<!-- <h3>yepa</h3>
+<button class="btn btn-outline-success" (click)="onAirAll()">En salle</button>
+<button class="btn btn-outline-danger" (click)="OnNoAirAll()">Pas en Salle</button> -->
+
