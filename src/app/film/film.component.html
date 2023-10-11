@@ -1,0 +1,13 @@
+<li class="list-group-item" [ngClass]="{'list-group-item-info' : filmOnAir == true,
+                                        'list-group-item-warning' : filmOnAir == false}">
+    <div class="onAir" *ngIf="filmOnAir == false">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Blu-ray_Disc.svg/1200px-Blu-ray_Disc.svg.png" alt="Blue Ray">
+    </div>
+    <div class="onAir" *ngIf="filmOnAir == true">
+        <img src="https://www.coze.fr/wp-content/uploads/2021/04/cinema-004.jpg" alt="Salle">
+    </div>
+    <h3 [ngStyle]="{color : changeColor()}">Film :  {{filmName}}  -- Visibilité :  {{getOnAir()}} </h3>
+    <img [src]="filmAffiche" alt="Affiche" class="affiche">
+    <button class="btn btn-outline-success" (click)="onWatchFilm()" >Regarder</button>
+    <button class="btn btn-outline-info" (click)="onSwitch()">Switch</button>
+</li>

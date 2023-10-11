@@ -1,0 +1,12 @@
+<div class="text-align:center">
+    <h1>Welcome to {{title}}</h1>
+  </div>
+
+  <ul class="list-group">
+    <app-film *ngFor="let film of films" 
+    [filmName]="film.title" 
+    [filmOnAir]="film.onAir" 
+    [filmAffiche]="film.filmAffiche"></app-film>
+
+    <!-- <app-film *ngFor="let film of films" [filmName]="film.title" [filmOnAir]="film.onAir" [filmAffiche]="film.filmAffiche"></app-film> -->
+  </ul>
